@@ -1,0 +1,133 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   handler_w_bonus.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: labenall <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/06/02 19:04:13 by labenall          #+#    #+#             */
+/*   Updated: 2022/06/02 19:04:16 by labenall         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "so_long_bonus.h"
+
+void	handler_w_0(t_mlx **g_mlx)
+{
+	void	*img_p;
+	void	*img_0;
+
+	(*g_mlx)->map->map_array[(*g_mlx)->player->x - 1] \
+		[(*g_mlx)->player->y] = 'P';
+	(*g_mlx)->map->map_array[(*g_mlx)->player->x] \
+		[(*g_mlx)->player->y] = '0';
+	(*g_mlx)->move++;
+	write(1, "move :", 6);
+	ft_putnbr((*g_mlx)->move);
+	write(1, "\n", 1);
+	img_p = mlx_xpm_file_to_image((*g_mlx)->mlx_ptr, \
+			(*g_mlx)->image->p, &(*g_mlx)->width, &(*g_mlx)->height);
+	mlx_put_image_to_window((*g_mlx)->mlx_ptr, (*g_mlx)->window_ptr, img_p, \
+			((*g_mlx)->player->y) * 64, ((*g_mlx)->player->x - 1) * 64);
+	img_0 = mlx_xpm_file_to_image((*g_mlx)->mlx_ptr, \
+			(*g_mlx)->image->k, &(*g_mlx)->width, &(*g_mlx)->height);
+	mlx_put_image_to_window((*g_mlx)->mlx_ptr, (*g_mlx)->window_ptr, img_0, \
+			((*g_mlx)->player->y) * 64, (*g_mlx)->player->x * 64);
+	(*g_mlx)->player->x--;
+	write_move(g_mlx);
+}
+
+void	handler_w_c(t_mlx **g_mlx)
+{
+	void	*img_p;
+	void	*img_0;
+
+	(*g_mlx)->map->map_array[(*g_mlx)->player->x - 1] \
+		[(*g_mlx)->player->y] = 'P';
+	(*g_mlx)->map->map_array[(*g_mlx)->player->x] \
+		[(*g_mlx)->player->y] = '0';
+	(*g_mlx)->map->c--;
+	(*g_mlx)->move++;
+	write(1, "move :", 6);
+	ft_putnbr((*g_mlx)->move);
+	write(1, "\n", 1);
+	img_p = mlx_xpm_file_to_image((*g_mlx)->mlx_ptr, \
+			(*g_mlx)->image->p, &(*g_mlx)->width, &(*g_mlx)->height);
+	mlx_put_image_to_window((*g_mlx)->mlx_ptr, (*g_mlx)->window_ptr, img_p, \
+			((*g_mlx)->player->y) * 64, ((*g_mlx)->player->x - 1) * 64);
+	img_0 = mlx_xpm_file_to_image((*g_mlx)->mlx_ptr, \
+			(*g_mlx)->image->k, &(*g_mlx)->width, &(*g_mlx)->height);
+	mlx_put_image_to_window((*g_mlx)->mlx_ptr, (*g_mlx)->window_ptr, img_0, \
+			((*g_mlx)->player->y) * 64, (*g_mlx)->player->x * 64);
+	(*g_mlx)->player->x--;
+	write_move(g_mlx);
+}
+
+void	handler_w_e(t_mlx **g_mlx)
+{
+	void	*img_p;
+	void	*img_0;
+
+	if ((*g_mlx)->map->c == 0)
+	{
+		(*g_mlx)->map->map_array[(*g_mlx)->player->x - 1] \
+			[(*g_mlx)->player->y] = 'P';
+		(*g_mlx)->map->map_array[(*g_mlx)->player->x] \
+			[(*g_mlx)->player->y] = '0';
+		write(1, "move :", 6);
+		ft_putnbr(++(*g_mlx)->move);
+		write(1, "\n", 1);
+		img_p = mlx_xpm_file_to_image((*g_mlx)->mlx_ptr, \
+				(*g_mlx)->image->p, &(*g_mlx)->width, &(*g_mlx)->height);
+		mlx_put_image_to_window((*g_mlx)->mlx_ptr, (*g_mlx)->window_ptr, img_p, \
+				((*g_mlx)->player->y) * 64, ((*g_mlx)->player->x - 1) * 64);
+		img_0 = mlx_xpm_file_to_image((*g_mlx)->mlx_ptr, \
+				(*g_mlx)->image->k, &(*g_mlx)->width, &(*g_mlx)->height);
+		mlx_put_image_to_window((*g_mlx)->mlx_ptr, (*g_mlx)->window_ptr, \
+				img_0, ((*g_mlx)->player->y) * 64, (*g_mlx)->player->x * 64);
+		(*g_mlx)->player->x--;
+		write_move(g_mlx);
+		ft_exit(g_mlx, "Bravo\n", 0);
+	}
+}
+
+void	handler_w_m(t_mlx **g_mlx)
+{
+	void	*img_p;
+	void	*img_0;
+
+	(*g_mlx)->map->map_array[(*g_mlx)->player->x - 1] \
+		[(*g_mlx)->player->y] = 'P';
+	(*g_mlx)->map->map_array[(*g_mlx)->player->x] \
+		[(*g_mlx)->player->y] = '0';
+	write(1, "move :", 6);
+	ft_putnbr(++(*g_mlx)->move);
+	write(1, "\n", 1);
+	img_p = mlx_xpm_file_to_image((*g_mlx)->mlx_ptr, \
+			(*g_mlx)->image->p, &(*g_mlx)->width, &(*g_mlx)->height);
+	mlx_put_image_to_window((*g_mlx)->mlx_ptr, (*g_mlx)->window_ptr, img_p, \
+			((*g_mlx)->player->y) * 64, ((*g_mlx)->player->x - 1) * 64);
+	img_0 = mlx_xpm_file_to_image((*g_mlx)->mlx_ptr, \
+			(*g_mlx)->image->k, &(*g_mlx)->width, &(*g_mlx)->height);
+	mlx_put_image_to_window((*g_mlx)->mlx_ptr, (*g_mlx)->window_ptr, \
+			img_0, ((*g_mlx)->player->y) * 64, (*g_mlx)->player->x * 64);
+	(*g_mlx)->player->x--;
+	write_move(g_mlx);
+	ft_exit(g_mlx, "khasarti\n", 0);
+}
+
+void	handler_w(t_mlx **g_mlx)
+{
+	if ((*g_mlx)->map->map_array[(*g_mlx)->player->x - 1] \
+			[(*g_mlx)->player->y] == '0')
+		handler_w_0(g_mlx);
+	else if ((*g_mlx)->map->map_array[(*g_mlx)->player->x - 1] \
+			[(*g_mlx)->player->y] == 'C')
+		handler_w_c(g_mlx);
+	else if ((*g_mlx)->map->map_array[(*g_mlx)->player->x - 1] \
+			[(*g_mlx)->player->y] == 'E')
+		handler_w_e(g_mlx);
+	else if ((*g_mlx)->map->map_array[(*g_mlx)->player->x - 1] \
+			[(*g_mlx)->player->y] == 'M')
+		handler_w_m(g_mlx);
+}
